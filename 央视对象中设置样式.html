@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <style>
+        .basic{
+            width: 100px;
+            height: 100px;
+        }
+        .border1{
+            border: 1px solid red;
+        }
+        .border2{
+            border-radius: 40px;
+        }
+        .border3{
+            box-shadow: 1px 1px 2px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" class='basic' >
+        <button @click = "change" v-bind:class="ob">改变</button>
+    </div>
+    <script>
+        Vue.config.productionTip=false;
+        new Vue({
+            el:'#root',
+            data:{
+                ob:{
+                    border1:true,
+                    border2:true,
+                    border3:true
+                }
+            },
+            methods: {
+                change(){
+                    this.ob.border1 = false;
+                }
+            },
+        })
+    </script>
+</body>
+</html>
