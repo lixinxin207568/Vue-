@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <form @submit.prevent="demo">
+            <label for="accountInput">账号：</label>
+            <input id="accountInput" type="text" v-model="account">
+            <br>
+            <label for="passwordInput">密码：</label>
+            <input id="passwordInput" type="password" v-model = "password">
+            <br>
+            <label for="ageInput">年龄：</label>
+            <input id="ageInput" type="number" v-model.number="age">
+            <br>
+            性别：
+            <label for="sexBoyInput">男</label>
+            <input id="sexBoyInput" type="radio" name="sex" v-model="sex" value="male">
+            <label for="sexGirlInput">女</label>
+            <input id="sexGirlInput" type="radio" name="sex" v-model="sex" value="female">
+            <br>
+            <br>
+            爱好：
+            <label for="studyCheckbox">学习</label>
+            <input id="studyCheckbox" type="checkbox" v-model="hobby" value="study">
+
+            <label for="singCheckbox">唱歌</label>
+            <input id="singCheckbox" type="checkbox" v-model="hobby" value="sing">
+
+            <label for="danceCheckbox">跳舞</label>
+            <input id="danceCheckbox" type="checkbox" v-model="hobby" value="dance">
+
+            <label for="eatCheckbox">吃饭</label>
+            <input id="eatCheckbox" type="checkbox" v-model = "hobby" value="eat">
+            <br>
+            <br>
+            所属校区：
+            <select v-model = "city">
+                <option value="">请选择校区</option>
+                <option value="beijing">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="shenzhen">深圳</option>
+                <option value="wuhan">武汉</option>
+            </select>
+            <br>
+            <br>
+            其他信息：
+            <textarea v-model="other"></textarea>
+            <br>
+            <br>
+            <input type="checkbox" v-model="agree">
+            阅读并接受<a href="javascript:;">用户协议</a>
+            <br>
+            <br>
+            <button>提交</button>
+        </form>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el:'#root',
+            data:function(){
+                return{
+                    account:'',
+                    password:'',
+                    sex:'male',
+                    hobby:[],
+                    city:'beijing',
+                    other:'默认',
+                    agree:'',
+                    age:0
+                }
+            },
+            methods: {
+                demo(){
+                    console.log(JSON.stringify(this._data));
+                    console.log(JSON.parse(JSON.stringify(this._data)))
+                }
+            }
+        });
+    </script>
+</body>
+</html>
